@@ -1,10 +1,10 @@
-package com.kosa.myapp.member.service;
+package com.kosa.myapp.member.dao;
 
 import java.util.List;
 
 import com.kosa.myapp.member.model.Member;
 
-public interface IMemberService {
+public interface IMemberRepository {
 	void insertMember(Member member);
 	Member selectMember(String userid);
 	List<Member> selectAllMembers();
