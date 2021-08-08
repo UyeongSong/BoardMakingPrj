@@ -4,17 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:setBundle basename="i18n/board"/>
 <!DOCTYPE html>
+<html>
 <jsp:include page="WEB-INF/views/include/staticFiles.jsp"/>
 <script type="text/javascript">
 	document.addEventListner("DOMContentLoaded", function() {
 		// JavaScript form validation
 	var checkPassword = function(Str) {
-		var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z].{6}$/;	
+		var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z].{6,}$/;	
 		return re.test(str);
 	};
 	
 	var checkForm = function(e)	{
-		if(this.username.value =="") {
+		if(this.username.value == "") {
 			alert("Error: Username cannot be blank!");
 			this.username.focus();
 			e.preventDefault(); // equivalent to return false
@@ -35,12 +36,12 @@
 				return;
 			}
 		}else{
-			alert("Error: Please check that you've entered ad confirmed your password!");
+			alert("Error: Please check that you've entered and confirmed your password!");
 			this.pwd1.focus();
 			e.preventDefault();
 			return;
 		}
-		alert("Both username and password are VALID"!);
+		alert("Both username and password are VALID!");
 	};
 	
 	var myForm = document.getElementById("joinForm");
@@ -68,18 +69,18 @@
 		}, false);
 		
 		pwd1Input.addEventListener("keyup", function()	{
-			this.setCustomValidity(this.validity.patternMismatch ? pwd1Input.title : "")
-			if(this.checkValidity()){
+			this.setCustomValidity(this.validity.patternMismatch ? pwd1Input.title : "");
+			if(this.checkValidity()) {
 				pwd2Input.pattern = this.value;
 				pwd2Input.setCustomaValidity(pwd2Input.title);
 			}else{
 				pwd2Input.pattern = this.pattern;
 				pwd2Input.setCustomaValidity("");
 			}
-		}. false);
+		}, false);
 		
 		pwd2Input.addEventListener("keyup", function() {
-			this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "")
+			this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "");
 		}, false);
 	
 	}
